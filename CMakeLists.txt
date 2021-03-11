@@ -10,10 +10,12 @@ include_directories(./include)
 set(SOURCE_FILES
         main.cpp
         src/Node.tpp
+        src/Link.tpp
 )
 
 set(HEADER_FILES
-    include/Node.hpp
+        include/Node.hpp
+        include/Link.hpp
 )
 
 add_executable(Graphs_Dijkstra ${SOURCE_FILES} ${HEADER_FILES})
