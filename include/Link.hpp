@@ -20,7 +20,7 @@ public:
      * @param end End node
      * @param weight Weight
      */
-    Link(Node<T>& start, Node<T>& end, float weight = 1.);
+    Link(Node<T>* start, Node<T>* end, float weight = 1.);
 
     /**
      * Destructor
@@ -30,23 +30,40 @@ public:
     /**
      * @return Start node
      */
-    Node<T>& getStart();
+    Node<T>* getStart() const;
 
     /**
      * @return End node
      */
-    Node<T>& getEnd();
+    Node<T>* getEnd() const;
+
+    /**
+     * Get the other node, not the one we're already on
+     * @param node First side
+     * @return Other side
+     */
+    Node<T>* getOther(Node<T>* node) const;
+
+    /**
+     * Override the << operator
+     * @tparam U Any type
+     * @param os Output stream
+     * @param link Link
+     * @return Output stream
+     */
+    template <typename U>
+    friend std::ostream& operator <<(std::ostream& os, const Link<U>& link);
 
 private:
     /**
      * Start node
      */
-    Node<T>& start;
+    Node<T>* start;
 
     /**
      * End node
      */
-    Node<T>& end;
+    Node<T>* end;
 
     /**
      * Link weight

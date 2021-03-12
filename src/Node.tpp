@@ -8,30 +8,42 @@ template <typename T>
 Node<T>::Node() = default;
 
 template <typename T>
-Node<T>::Node(T elt) {
-    content = elt;
-}
+Node<T>::Node(T elt) :
+    content(elt)
+{}
 
 template <typename T>
 Node<T>::~Node() {
     for (Link<T>* link : links)
-        if (&(link->getStart()) == this)
+        if (link->getStart() == this)
             delete link;
 }
 
 template <typename T>
-T Node<T>::getContent() {
+T& Node<T>::getContent() const {
     return content;
 }
 
 template <typename T>
-void Node<T>::setContent(T elt) {
+void Node<T>::setContent(const T& elt) {
     content = elt;
 }
 
 template <typename T>
-Link<T> Node<T>::createLinkTo(Node& other, float weight) {
-    auto* link = new Link<T>(*this, other, weight);
+Link<T>& Node<T>::createLinkTo(Node<T>* other, float weight) {
+    auto* link = new Link<T>(this, other, weight);
     this->links.push_back(link);
-    other.links.push_back(link);
+    other->links.push_back(link);
+    return *link;
+}
+
+template <typename T>
+const std::vector<Link<T>*>& Node<T>::getLinks() const {
+    return links;
+}
+
+template <typename U>
+std::ostream& operator <<(std::ostream& os, const Node<U>& node) {
+    os << "[" << node.content << "]";
+    return os;
 }

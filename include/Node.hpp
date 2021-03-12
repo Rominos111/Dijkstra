@@ -35,19 +35,34 @@ public:
     /**
      * @return Content
      */
-    [[nodiscard]] T getContent();
+    [[nodiscard]] T& getContent() const;
 
     /**
      * @param elt New content
      */
-    void setContent(T elt);
+    void setContent(const T& elt);
 
     /**
      * Create a link from this to other
      * @param other Other node
      * @return Link
      */
-    Link<T> createLinkTo(Node& other, float weight = 1.);
+    Link<T>& createLinkTo(Node<T>* other, float weight = 1.);
+
+    /**
+     * @return Links
+     */
+    const std::vector<Link<T>*>& getLinks() const;
+
+    /**
+     * Override the << operator
+     * @tparam U Any type
+     * @param os Output stream
+     * @param node Node
+     * @return Output stream
+     */
+    template <typename U>
+    friend std::ostream& operator <<(std::ostream& os, const Node<U>& node);
 
 private:
     /**
