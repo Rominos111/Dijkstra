@@ -8,15 +8,17 @@ template <typename T>
 Node<T>::Node() = default;
 
 template <typename T>
-Node<T>::Node(T elt) :
-    content(elt)
+Node<T>::Node(T item) :
+    content(item)
 {}
 
 template <typename T>
 Node<T>::~Node() {
-    for (Link<T>* link : links)
+    for (Link<T>* link : links) {
+        // FIXME: Some links are obviously already deleted
         if (link->getStart() == this)
             delete link;
+    }
 }
 
 template <typename T>
@@ -25,8 +27,8 @@ T& Node<T>::getContent() const {
 }
 
 template <typename T>
-void Node<T>::setContent(const T& elt) {
-    content = elt;
+void Node<T>::setContent(T item) {
+    content = item;
 }
 
 template <typename T>

@@ -38,6 +38,11 @@ Node<T>* Link<T>::getOther(Node<T>* node) const {
 }
 
 template <typename T>
+float Link<T>::getWeight() const {
+    return weight;
+}
+
+template <typename T>
 std::ostream& operator <<(std::ostream& os, const Link<T>& link) {
     os << "(" << link.start << "-" << link.end << ")";
     return os;

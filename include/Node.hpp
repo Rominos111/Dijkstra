@@ -25,7 +25,7 @@ public:
      * Constructor
      * @param elt Content
      */
-    explicit Node(T elt);
+    explicit Node(T item);
 
     /**
      * Destructor
@@ -40,7 +40,7 @@ public:
     /**
      * @param elt New content
      */
-    void setContent(const T& elt);
+    void setContent(T item);
 
     /**
      * Create a link from this to other

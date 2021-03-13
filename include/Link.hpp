@@ -45,6 +45,11 @@ public:
     Node<T>* getOther(Node<T>* node) const;
 
     /**
+     * @return Weight
+     */
+    [[nodiscard]] float getWeight() const;
+
+    /**
      * Override the << operator
      * @tparam U Any type
      * @param os Output stream
