@@ -11,11 +11,13 @@ set(SOURCE_FILES
         main.cpp
         src/Node.tpp
         src/Link.tpp
+        src/PriorityQueue.tpp
 )
 
 set(HEADER_FILES
         include/Node.hpp
         include/Link.hpp
+        include/PriorityQueue.hpp
 )
 
 add_executable(Graphs_Dijkstra ${SOURCE_FILES} ${HEADER_FILES})
